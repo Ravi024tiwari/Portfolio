@@ -24,35 +24,9 @@ import {
 } from 'lucide-react';
 import { PORTFOLIO_DATA, SkillCategory } from '@/data/portfolioData';
 import { TECH_ICON_MAP } from '@/components/TechIcons';
+import EngineeringPillars from '@/components/EngineeringPillars';
 
 type TabType = 'story' | 'skills' | 'dsa';
-
-const ENGINEERING_PILLARS = [
-  {
-    icon: Layers,
-    title: 'Scalable Full-Stack Systems',
-    desc: 'Architecting robust backend pipelines with Node.js, Express, Next.js App Router, and geospatial MongoDB querying.',
-    tags: ['Next.js', 'Node.js', 'MongoDB Geospatial', 'RESTful APIs'],
-  },
-  {
-    icon: Zap,
-    title: 'Micro-Interactive & Modern UI',
-    desc: 'Crafting responsive, high-fidelity interfaces with fluid Framer Motion animations and clean component structures.',
-    tags: ['React.js', 'TypeScript', 'Tailwind CSS', 'Framer Motion'],
-  },
-  {
-    icon: Cpu,
-    title: 'Algorithmic Optimization & DSA',
-    desc: 'Rigorous problem solver in C++ with 800+ LeetCode problems solved, emphasizing optimal time and space complexity.',
-    tags: ['C++ (STL)', 'Graph Algorithms', 'Dynamic Programming', 'Trees'],
-  },
-  {
-    icon: Laptop,
-    title: 'Cloud & Database Architecture',
-    desc: 'Designing performant database schemas with PostgreSQL, MongoDB geospatial indexing, and serverless edge functions.',
-    tags: ['PostgreSQL', 'MongoDB', 'Vercel Serverless', 'REST APIs'],
-  },
-];
 
 export default function AboutBento() {
   const [activeTab, setActiveTab] = useState<TabType>('story');
@@ -246,53 +220,8 @@ export default function AboutBento() {
                 </div>
               </div>
 
-              {/* Engineering Pillars - Interactive Non-Box Grid */}
-              <div className="flex flex-col gap-5 pt-4">
-                <div className="flex items-center gap-2">
-                  <Flame className="w-4 h-4 text-(--accent-primary)" />
-                  <h3 className="text-lg font-bold" style={{ color: 'var(--text-heading)' }}>
-                    Engineering Pillars & Architecture Standards
-                  </h3>
-                </div>
-
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-                  {ENGINEERING_PILLARS.map((pillar, i) => {
-                    const PillarIcon = pillar.icon;
-                    return (
-                      <motion.div
-                        key={i}
-                        whileHover={{ y: -4 }}
-                        transition={{ duration: 0.2 }}
-                        className="p-5 rounded-2xl border border-slate-200/90 dark:border-white/20 flex flex-col justify-between gap-4 transition-all duration-300 shadow-sm hover:shadow-md"
-                        style={{ background: '#ffffff' }}
-                      >
-                        <div className="flex flex-col gap-3">
-                          <div className="w-10 h-10 rounded-xl flex items-center justify-center bg-indigo-50 dark:bg-orange-50 text-(--accent-primary) border border-indigo-100 dark:border-orange-200">
-                            <PillarIcon className="w-5 h-5" />
-                          </div>
-                          <h4 className="text-sm font-bold text-slate-900">
-                            {pillar.title}
-                          </h4>
-                          <p className="text-xs leading-relaxed text-slate-600">
-                            {pillar.desc}
-                          </p>
-                        </div>
-
-                        <div className="flex flex-wrap gap-1.5 pt-2 border-t border-slate-100">
-                          {pillar.tags.map((tag, tIdx) => (
-                            <span
-                              key={tIdx}
-                              className="text-[10px] font-mono px-2 py-0.5 rounded-md bg-slate-50 border border-slate-200/70 text-slate-700 font-medium"
-                            >
-                              {tag}
-                            </span>
-                          ))}
-                        </div>
-                      </motion.div>
-                    );
-                  })}
-                </div>
-              </div>
+              {/* Engineering Pillars - Complex Scroll-Triggered Orbital Reveal */}
+              <EngineeringPillars />
             </motion.div>
           )}
 
