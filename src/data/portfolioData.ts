@@ -39,12 +39,12 @@ export const PORTFOLIO_DATA = {
     github: "https://github.com/Ravi024tiwari",
     leetcode: "https://leetcode.com/u/Ravi_Tiwari2005/",
     gfg: "https://www.geeksforgeeks.org/profile/raviashoktkrsk",
-    bio: "Full-Stack Software Developer specializing in the MERN stack, Next.js, TypeScript, and React Native. I build scalable, high-performance web and mobile applications with a strong focus on clean, micro-interactive user interfaces and robust backend architectures. Beyond web development, I am actively engaged in competitive programming with C++ (800+ LeetCode problems solved) and exploring modern frontend architectures.",
+    bio: "Full-Stack Software Engineer specializing in high-performance web applications using Next.js, TypeScript, PostgreSQL, and Node.js. Experienced in designing scalable backend systems and fluid, responsive interfaces, backed by a strong foundation in algorithmic problem-solving (800+ LeetCode problems solved).",
     summaryBullets: [
       "Currently engaged in a professional software development internship.",
       "Solved 800+ DSA problems on LeetCode & 100+ on GeeksforGeeks in C++.",
       "Expertise in Next.js, MERN stack, TypeScript & MongoDB Geospatial Indexing.",
-      "Building high-performance web systems and cross-platform mobile apps.",
+      "Building high-performance web systems, RESTful APIs, and scalable architectures.",
       "Skilled in modern state management, real-time WebSockets, and secure integrations."
     ]
   },
@@ -52,7 +52,7 @@ export const PORTFOLIO_DATA = {
   stats: [
     { label: "LeetCode Solved", value: "800+", detail: "C++ Data Structures & Algo" },
     { label: "GeeksforGeeks", value: "100+", detail: "Algorithms & Problem Solving" },
-    { label: "Core Focus", value: "MERN + Next.js", detail: "TypeScript, React Native, SSR" },
+    { label: "Core Focus", value: "MERN + Next.js", detail: "TypeScript, SSR, REST APIs" },
     { label: "Geospatial & Realtime", value: "Razorpay / Socket", detail: "Full Stack Systems" }
   ],
 
@@ -101,19 +101,10 @@ export const PORTFOLIO_DATA = {
         { name: "Node.js", level: 90, tag: "Runtime Architecture" },
         { name: "Express.js", level: 90, tag: "REST APIs" },
         { name: "MongoDB", level: 88, tag: "Geospatial Indexing & Mongoose" },
+        { name: "PostgreSQL", level: 85, tag: "Relational DB & SQL" },
         { name: "Socket.io", level: 86, tag: "Real-Time WebSockets" }
       ]
     },
-    {
-      category: "Mobile Development",
-      iconName: "Smartphone",
-      skills: [
-        { name: "React Native CLI", level: 88, tag: "Cross-Platform Apps" },
-        { name: "Expo Router", level: 86, tag: "File-Based Routing" },
-        { name: "Bottom Navigation", level: 90, tag: "Persistent Tab Layouts" }
-      ]
-    },
-
     {
       category: "Tools & Integrations",
       iconName: "Wrench",
@@ -191,7 +182,7 @@ export const PORTFOLIO_DATA = {
       title: "Software Development Intern",
       organization: "Software Engineering Team",
       type: "Work Experience",
-      description: "Engaged in full-stack web and mobile application engineering using MERN stack, Next.js, and React Native. Participating in backend optimizations, API query tuning, and micro-interactive component design.",
+      description: "Engaged in full-stack web application engineering using MERN stack, Next.js, TypeScript, and PostgreSQL. Participating in backend optimizations, API query tuning, and micro-interactive component design.",
       skills: ["React.js", "Next.js", "Node.js", "TypeScript", "MongoDB", "Git"]
     },
     {

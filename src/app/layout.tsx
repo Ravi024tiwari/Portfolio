@@ -16,13 +16,13 @@ const jetbrainsMono = JetBrains_Mono({
 export const metadata: Metadata = {
   title: 'Ravi Tiwari | Full-Stack Software Developer Portfolio',
   description:
-    'Full-Stack Software Developer specializing in MERN stack, Next.js, TypeScript, React Native, and C++ Competitive Programming (800+ LeetCode solved).',
+    'Full-Stack Software Engineer specializing in high-performance web applications using Next.js, TypeScript, PostgreSQL, and Node.js. 800+ LeetCode problems solved.',
   keywords: [
     'Ravi Tiwari',
     'Full Stack Developer',
     'MERN Stack',
     'TypeScript',
-    'React Native',
+    'PostgreSQL',
     'Next.js',
     'C++ Competitive Programming',
     'LeetCode 800+',
@@ -35,7 +35,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Ravi Tiwari | Full-Stack Software Developer',
     description:
-      'High-performance full-stack web and mobile developer portfolio. Explore projects, DSA competitive programming stats, and engineering experience.',
+      'High-performance full-stack web developer portfolio. Explore projects, DSA competitive programming stats, and engineering experience.',
     type: 'website',
   },
 };

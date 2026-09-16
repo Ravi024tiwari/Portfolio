@@ -11,6 +11,7 @@ import {
   Code,
   Award,
   ArrowUpRight,
+  Sparkles,
 } from 'lucide-react';
 import { SiGithub } from 'react-icons/si';
 import confetti from 'canvas-confetti';
@@ -24,15 +25,8 @@ export default function ContactSection() {
     message: ''
   });
 
-  const [copiedItem, setCopiedItem] = useState<string | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
-
-  const handleCopy = (text: string, label: string) => {
-    navigator.clipboard.writeText(text);
-    setCopiedItem(label);
-    setTimeout(() => setCopiedItem(null), 2500);
-  };
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
@@ -51,11 +45,17 @@ export default function ContactSection() {
   };
 
   return (
-    <section id="contact" className="py-20 px-4 sm:px-8 relative z-10">
-      <div className="max-w-6xl mx-auto flex flex-col gap-12">
+    <section id="contact" className="py-24 px-4 sm:px-8 relative z-10">
+      <div className="max-w-6xl mx-auto flex flex-col gap-14">
 
         {/* Section Header */}
-        <div className="flex flex-col items-center text-center gap-3">
+        <motion.div 
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: '-60px' }}
+          transition={{ duration: 0.6 }}
+          className="flex flex-col items-center text-center gap-3"
+        >
           <div className="section-badge">
             <Send className="w-3.5 h-3.5" />
             <span>Get in Touch</span>
@@ -64,22 +64,28 @@ export default function ContactSection() {
             Let&apos;s <span className="gradient-text">Connect</span>
           </h2>
           <p className="text-sm sm:text-base max-w-2xl" style={{ color: 'var(--text-secondary)' }}>
-            Interested in hiring me for software development roles, internships, or discussing full-stack & AI agent architecture? Send a message directly.
+            Interested in hiring me for software development roles, internships, or discussing full-stack architecture? Send a message directly.
           </p>
-        </div>
+        </motion.div>
 
         {/* Main Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-7 items-start">
 
           {/* Contact Info (5 cols) */}
-          <div className="lg:col-span-5 flex flex-col gap-5">
+          <motion.div 
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, margin: '-50px' }}
+            transition={{ duration: 0.6 }}
+            className="lg:col-span-5 flex flex-col gap-5"
+          >
             <div
-              className="rounded-2xl p-6 flex flex-col gap-5"
+              className="rounded-3xl p-6 sm:p-7 flex flex-col gap-6 glass-card-glow"
               style={{ background: 'var(--bg-card)', border: '1px solid var(--border-primary)', boxShadow: 'var(--shadow-card)' }}
             >
-              <div className="flex items-center gap-3">
+              <div className="flex items-center gap-3.5">
                 <div
-                  className="w-10 h-10 rounded-xl flex items-center justify-center text-white font-bold text-sm"
+                  className="w-12 h-12 rounded-2xl flex items-center justify-center text-white font-bold text-base shadow-md"
                   style={{ background: 'var(--accent-primary)' }}
                 >
                   RT
@@ -91,70 +97,46 @@ export default function ContactSection() {
               </div>
 
               <p className="text-sm leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
-                Feel free to reach out via email, phone, or connect with me across coding platforms.
+                Feel free to reach out via email, WhatsApp, or connect with me across coding platforms.
               </p>
 
-              {/* Contact Pills */}
-              <div className="flex flex-col gap-2.5">
+              {/* Contact Direct Cards */}
+              <div className="flex flex-col gap-3">
                 {/* Email */}
                 <a
                   href={`mailto:${PORTFOLIO_DATA.personal.email}`}
-                  className="p-3.5 rounded-xl flex items-center justify-between gap-3 group transition-all duration-300 hover:scale-[1.01]"
-                  style={{ 
-                    background: 'var(--bg-elevated)', 
-                    border: '1px solid var(--border-primary)',
-                    boxShadow: 'none'
-                  }}
-                  onMouseEnter={(e) => {
-                    e.currentTarget.style.borderColor = 'var(--accent-primary)';
-                    e.currentTarget.style.boxShadow = '0 4px 20px rgba(249,115,22,0.08)';
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.borderColor = 'var(--border-primary)';
-                    e.currentTarget.style.boxShadow = 'none';
-                  }}
+                  className="p-3.5 rounded-2xl flex items-center justify-between gap-3 group transition-all duration-300 hover:scale-[1.02] border border-(--border-primary) hover:border-(--accent-primary)"
+                  style={{ background: 'var(--bg-elevated)' }}
                 >
                   <div className="flex items-center gap-3 overflow-hidden">
-                    <div className="p-2 rounded-lg shrink-0 transition-colors group-hover:bg-(--accent-primary) group-hover:text-white" style={{ background: 'var(--accent-primary-soft)', color: 'var(--accent-primary)' }}>
+                    <div className="p-2.5 rounded-xl shrink-0 transition-colors group-hover:bg-(--accent-primary) group-hover:text-white" style={{ background: 'var(--accent-primary-soft)', color: 'var(--accent-primary)' }}>
                       <Mail className="w-4 h-4" />
                     </div>
                     <div className="flex flex-col overflow-hidden">
-                      <span className="text-[10px] font-mono" style={{ color: 'var(--text-tertiary)' }}>Email</span>
+                      <span className="text-[10px] font-mono" style={{ color: 'var(--text-tertiary)' }}>Direct Email</span>
                       <span className="text-xs font-semibold truncate font-mono" style={{ color: 'var(--text-primary)' }}>
                         {PORTFOLIO_DATA.personal.email}
                       </span>
                     </div>
                   </div>
                   <div
-                    className="p-1.5 rounded-lg transition-all shrink-0 duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
-                    style={{ background: 'var(--bg-card)', color: 'var(--text-tertiary)' }}
+                    className="p-1.5 rounded-xl transition-all shrink-0 duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 bg-(--bg-card)"
+                    style={{ color: 'var(--text-tertiary)' }}
                   >
-                    <ArrowUpRight className="w-3.5 h-3.5 transition-colors group-hover:text-(--accent-primary)" />
+                    <ArrowUpRight className="w-4 h-4 transition-colors group-hover:text-(--accent-primary)" />
                   </div>
                 </a>
 
-                {/* Phone / WhatsApp */}
+                {/* WhatsApp */}
                 <a
                   href={`https://wa.me/${PORTFOLIO_DATA.personal.mobile.replace(/[^0-9]/g, '')}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="p-3.5 rounded-xl flex items-center justify-between gap-3 group transition-all duration-300 hover:scale-[1.01]"
-                  style={{ 
-                    background: 'var(--bg-elevated)', 
-                    border: '1px solid var(--border-primary)',
-                    boxShadow: 'none'
-                  }}
-                  onMouseEnter={(e) => {
-                    e.currentTarget.style.borderColor = 'var(--accent-success)';
-                    e.currentTarget.style.boxShadow = '0 4px 20px rgba(34,197,94,0.08)';
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.borderColor = 'var(--border-primary)';
-                    e.currentTarget.style.boxShadow = 'none';
-                  }}
+                  className="p-3.5 rounded-2xl flex items-center justify-between gap-3 group transition-all duration-300 hover:scale-[1.02] border border-(--border-primary) hover:border-(--accent-success)"
+                  style={{ background: 'var(--bg-elevated)' }}
                 >
                   <div className="flex items-center gap-3 overflow-hidden">
-                    <div className="p-2 rounded-lg shrink-0 transition-colors group-hover:bg-(--accent-success) group-hover:text-white" style={{ background: 'var(--accent-success-soft)', color: 'var(--accent-success)' }}>
+                    <div className="p-2.5 rounded-xl shrink-0 transition-colors group-hover:bg-(--accent-success) group-hover:text-white" style={{ background: 'var(--accent-success-soft)', color: 'var(--accent-success)' }}>
                       <Phone className="w-4 h-4" />
                     </div>
                     <div className="flex flex-col overflow-hidden">
@@ -165,89 +147,93 @@ export default function ContactSection() {
                     </div>
                   </div>
                   <div
-                    className="p-1.5 rounded-lg transition-all shrink-0 duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
-                    style={{ background: 'var(--bg-card)', color: 'var(--text-tertiary)' }}
+                    className="p-1.5 rounded-xl transition-all shrink-0 duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 bg-(--bg-card)"
+                    style={{ color: 'var(--text-tertiary)' }}
                   >
-                    <ArrowUpRight className="w-3.5 h-3.5 transition-colors group-hover:text-(--accent-success" />
+                    <ArrowUpRight className="w-4 h-4 transition-colors group-hover:text-(--accent-success)" />
                   </div>
                 </a>
 
                 {/* Location */}
                 <div
-                  className="p-3.5 rounded-xl flex items-center gap-3"
-                  style={{ background: 'var(--bg-elevated)', border: '1px solid var(--border-primary)' }}
+                  className="p-3.5 rounded-2xl flex items-center gap-3 border border-(--border-primary)"
+                  style={{ background: 'var(--bg-elevated)' }}
                 >
-                  <div className="p-2 rounded-lg shrink-0" style={{ background: 'var(--accent-tertiary-soft)', color: 'var(--accent-tertiary)' }}>
+                  <div className="p-2.5 rounded-xl shrink-0" style={{ background: 'var(--accent-tertiary-soft)', color: 'var(--accent-tertiary)' }}>
                     <MapPin className="w-4 h-4" />
                   </div>
                   <div className="flex flex-col">
-                    <span className="text-[10px] font-mono" style={{ color: 'var(--text-tertiary)' }}>Location</span>
-                    <span className="text-xs font-semibold" style={{ color: 'var(--text-primary)' }}>India • Open to Remote & Onsite</span>
+                    <span className="text-[10px] font-mono" style={{ color: 'var(--text-tertiary)' }}>Location & Work Model</span>
+                    <span className="text-xs font-semibold" style={{ color: 'var(--text-primary)' }}>India • Open to Remote & Relocation</span>
                   </div>
                 </div>
               </div>
 
               {/* Social Profiles */}
-              <div className="pt-3 flex items-center gap-2" style={{ borderTop: '1px solid var(--border-primary)' }}>
+              <div className="pt-4 flex items-center gap-2.5 border-t border-(--border-primary)">
                 <a href={PORTFOLIO_DATA.personal.github} target="_blank" rel="noopener noreferrer"
-                  className="p-2.5 rounded-lg text-xs font-medium flex items-center gap-1.5 transition-all hover:scale-105"
-                  style={{ background: 'var(--bg-elevated)', border: '1px solid var(--border-primary)', color: 'var(--text-secondary)' }}
+                  className="p-2.5 rounded-xl text-xs font-medium flex items-center gap-2 transition-all hover:scale-105 border border-(--border-primary)"
+                  style={{ background: 'var(--bg-elevated)', color: 'var(--text-secondary)' }}
                 >
-                  <SiGithub className="w-3.5 h-3.5" /> GitHub
+                  <SiGithub className="w-4 h-4" /> GitHub
                 </a>
                 <a href={PORTFOLIO_DATA.personal.leetcode} target="_blank" rel="noopener noreferrer"
-                  className="p-2.5 rounded-lg text-xs font-medium flex items-center gap-1.5 transition-all hover:scale-105"
-                  style={{ background: 'var(--bg-elevated)', border: '1px solid var(--border-primary)', color: 'var(--text-secondary)' }}
+                  className="p-2.5 rounded-xl text-xs font-medium flex items-center gap-2 transition-all hover:scale-105 border border-(--border-primary)"
+                  style={{ background: 'var(--bg-elevated)', color: 'var(--text-secondary)' }}
                 >
-                  <Code className="w-3.5 h-3.5" style={{ color: '#FFA116' }} /> LeetCode
+                  <Code className="w-4 h-4" style={{ color: '#FFA116' }} /> LeetCode
                 </a>
                 <a href={PORTFOLIO_DATA.personal.gfg} target="_blank" rel="noopener noreferrer"
-                  className="p-2.5 rounded-lg text-xs font-medium flex items-center gap-1.5 transition-all hover:scale-105"
-                  style={{ background: 'var(--bg-elevated)', border: '1px solid var(--border-primary)', color: 'var(--text-secondary)' }}
+                  className="p-2.5 rounded-xl text-xs font-medium flex items-center gap-2 transition-all hover:scale-105 border border-(--border-primary)"
+                  style={{ background: 'var(--bg-elevated)', color: 'var(--text-secondary)' }}
                 >
-                  <Award className="w-3.5 h-3.5" style={{ color: '#2F8D46' }} /> GFG
+                  <Award className="w-4 h-4" style={{ color: '#2F8D46' }} /> GFG
                 </a>
               </div>
             </div>
-          </div>
+          </motion.div>
 
           {/* Contact Form (7 cols) */}
-          <div
-            className="lg:col-span-7 rounded-2xl p-6 sm:p-7"
+          <motion.div
+            initial={{ opacity: 0, x: 20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, margin: '-50px' }}
+            transition={{ duration: 0.6 }}
+            className="lg:col-span-7 rounded-3xl p-6 sm:p-8 glass-card"
             style={{ background: 'var(--bg-card)', border: '1px solid var(--border-primary)', boxShadow: 'var(--shadow-card)' }}
           >
             {isSubmitted ? (
               <motion.div
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
-                className="py-10 flex flex-col items-center justify-center text-center gap-4"
+                className="py-12 flex flex-col items-center justify-center text-center gap-4"
               >
                 <div
-                  className="w-14 h-14 rounded-full flex items-center justify-center animate-bounce"
+                  className="w-16 h-16 rounded-full flex items-center justify-center animate-bounce"
                   style={{ background: 'var(--accent-success-soft)', color: 'var(--accent-success)', border: '1px solid rgba(34,197,94,0.3)' }}
                 >
-                  <CheckCircle2 className="w-7 h-7" />
+                  <CheckCircle2 className="w-8 h-8" />
                 </div>
-                <h3 className="text-xl font-bold" style={{ color: 'var(--text-heading)' }}>Message Sent!</h3>
+                <h3 className="text-2xl font-bold" style={{ color: 'var(--text-heading)' }}>Message Sent!</h3>
                 <p className="text-sm max-w-md" style={{ color: 'var(--text-secondary)' }}>
-                  Thank you, <strong style={{ color: 'var(--accent-primary)' }}>{formData.name}</strong>. I&apos;ll respond to <span className="font-mono" style={{ color: 'var(--accent-tertiary)' }}>{formData.email}</span> soon.
+                  Thank you, <strong style={{ color: 'var(--accent-primary)' }}>{formData.name}</strong>. I&apos;ll respond to <span className="font-mono" style={{ color: 'var(--accent-tertiary)' }}>{formData.email}</span> as soon as possible.
                 </p>
                 <button
                   onClick={() => { setIsSubmitted(false); setFormData({ name: '', email: '', subject: '', message: '' }); }}
-                  className="glass-button text-xs font-medium text-white px-5 py-2.5 rounded-lg mt-2 cursor-pointer"
+                  className="glass-button text-xs font-medium text-white px-6 py-3 rounded-xl mt-2 cursor-pointer"
                 >
-                  Send Another
+                  Send Another Message
                 </button>
               </motion.div>
             ) : (
               <form onSubmit={handleSubmit} className="flex flex-col gap-4">
                 <div className="flex flex-col gap-1">
-                  <h3 className="text-xl font-bold" style={{ color: 'var(--text-heading)' }}>Send a Message</h3>
-                  <p className="text-xs font-mono" style={{ color: 'var(--text-tertiary)' }}>Fill in your details</p>
+                  <h3 className="text-xl font-bold" style={{ color: 'var(--text-heading)' }}>Direct Dispatch</h3>
+                  <p className="text-xs font-mono" style={{ color: 'var(--text-tertiary)' }}>Send an inquiry or interview schedule directly</p>
                 </div>
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                  <div className="flex flex-col gap-1">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+                  <div className="flex flex-col gap-1.5">
                     <label className="text-xs font-mono" style={{ color: 'var(--text-secondary)' }}>Your Name</label>
                     <input
                       type="text"
@@ -258,12 +244,12 @@ export default function ContactSection() {
                       className="form-input"
                     />
                   </div>
-                  <div className="flex flex-col gap-1">
+                  <div className="flex flex-col gap-1.5">
                     <label className="text-xs font-mono" style={{ color: 'var(--text-secondary)' }}>Your Email</label>
                     <input
                       type="email"
                       required
-                      placeholder="e.g. hr@company.com"
+                      placeholder="e.g. hr@techcompany.com"
                       value={formData.email}
                       onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                       className="form-input"
@@ -271,24 +257,24 @@ export default function ContactSection() {
                   </div>
                 </div>
 
-                <div className="flex flex-col gap-1">
+                <div className="flex flex-col gap-1.5">
                   <label className="text-xs font-mono" style={{ color: 'var(--text-secondary)' }}>Subject</label>
                   <input
                     type="text"
                     required
-                    placeholder="Software Engineering Role / Project Inquiry"
+                    placeholder="Full-Stack Developer Opportunity / Project Inquiry"
                     value={formData.subject}
                     onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
                     className="form-input"
                   />
                 </div>
 
-                <div className="flex flex-col gap-1">
+                <div className="flex flex-col gap-1.5">
                   <label className="text-xs font-mono" style={{ color: 'var(--text-secondary)' }}>Message</label>
                   <textarea
                     required
                     rows={4}
-                    placeholder="Briefly describe your requirements..."
+                    placeholder="Briefly detail the opportunity or requirements..."
                     value={formData.message}
                     onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                     className="form-input resize-none"
@@ -298,26 +284,27 @@ export default function ContactSection() {
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="glass-button text-white text-sm font-medium py-3 px-5 rounded-xl flex items-center justify-center gap-2 cursor-pointer disabled:opacity-50"
+                  className="glass-button text-white text-sm font-medium py-3.5 px-6 rounded-xl flex items-center justify-center gap-2 cursor-pointer disabled:opacity-50 mt-1"
                 >
                   {isSubmitting ? (
                     <>
                       <div className="w-4 h-4 rounded-full border-2 border-white border-t-transparent animate-spin" />
-                      <span>Sending...</span>
+                      <span>Sending message...</span>
                     </>
                   ) : (
                     <>
                       <Send className="w-4 h-4" />
-                      <span>Send Message</span>
+                      <span>Dispatch Message</span>
                     </>
                   )}
                 </button>
               </form>
             )}
-          </div>
+          </motion.div>
 
         </div>
       </div>
     </section>
   );
 }
+
