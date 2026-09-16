@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, Send, User, Briefcase, Sun, Moon, Sparkles } from 'lucide-react';
+import { Menu, X, Send, User, Briefcase, Sun, Moon, Sparkles, FileDown } from 'lucide-react';
 import { SiGithub } from 'react-icons/si';
 import { useTheme } from '@/components/ThemeProvider';
 import { PORTFOLIO_DATA } from '@/data/portfolioData';
@@ -123,9 +123,27 @@ export default function Navbar() {
               {theme === 'dark' ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
             </button>
 
+            {/* Resume Download Button - Directly visible on mobile & desktop */}
+            <a
+              href={PORTFOLIO_DATA.personal.resumeUrl || '/Ravi_Tiwari_Resume.pdf'}
+              download="Ravi_Tiwari_Resume.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-1.5 px-2.5 sm:px-3 py-1.5 rounded-xl text-xs font-mono font-bold transition-all hover:scale-105 active:scale-95 border hover:border-(--accent-primary) shadow-sm"
+              style={{
+                background: 'var(--bg-elevated)',
+                borderColor: 'var(--border-primary)',
+                color: 'var(--text-primary)',
+              }}
+              title="Download Resume PDF"
+            >
+              <FileDown className="w-3.5 h-3.5 text-(--accent-primary)" />
+              <span>Resume</span>
+            </a>
+
             {/* Hire Badge - Desktop */}
             <div
-              className="hidden sm:flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-medium"
+              className="hidden lg:flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-medium"
               style={{ background: 'var(--accent-success-soft)', color: 'var(--accent-success)', border: '1px solid rgba(34,197,94,0.25)' }}
             >
               <span className="w-1.5 h-1.5 rounded-full animate-pulse" style={{ background: 'var(--accent-success)' }} />
@@ -180,6 +198,28 @@ export default function Navbar() {
                   </a>
                 );
               })}
+
+              <a
+                href={PORTFOLIO_DATA.personal.resumeUrl || '/Ravi_Tiwari_Resume.pdf'}
+                download="Ravi_Tiwari_Resume.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => setMobileMenuOpen(false)}
+                className="flex items-center justify-between p-3 rounded-xl text-sm font-medium transition-colors border"
+                style={{
+                  background: 'var(--bg-elevated)',
+                  borderColor: 'var(--border-primary)',
+                  color: 'var(--text-primary)',
+                }}
+              >
+                <div className="flex items-center gap-3">
+                  <FileDown className="w-4 h-4 text-(--accent-primary)" />
+                  <span>Download Resume</span>
+                </div>
+                <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-(--accent-primary-soft) text-(--accent-primary)">
+                  PDF
+                </span>
+              </a>
 
               <div className="pt-3 mt-2 flex items-center justify-between" style={{ borderTop: '1px solid var(--border-primary)' }}>
                 <button

@@ -27,21 +27,47 @@ export default function ContactSection() {
 
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
-  const handleSubmit = (e: FormEvent) => {
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
+    setErrorMessage(null);
 
-    setTimeout(() => {
-      setIsSubmitting(false);
-      setIsSubmitted(true);
-
-      confetti({
-        particleCount: 100,
-        spread: 70,
-        origin: { y: 0.6 }
+    try {
+      const response = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Accept: 'application/json',
+        },
+        body: JSON.stringify({
+          access_key: '7f4b825b-460f-4645-9e96-7bc01f578727',
+          name: formData.name,
+          email: formData.email,
+          subject: formData.subject || `New Portfolio Inquiry from ${formData.name}`,
+          message: formData.message,
+          from_name: `${formData.name} via Portfolio`,
+        }),
       });
-    }, 1200);
+
+      const result = await response.json();
+
+      if (result.success) {
+        setIsSubmitted(true);
+        confetti({
+          particleCount: 120,
+          spread: 80,
+          origin: { y: 0.6 }
+        });
+      } else {
+        setErrorMessage(result.message || 'Something went wrong. Please try again or reach out directly via email.');
+      }
+    } catch (err) {
+      setErrorMessage('Network error. Please try again or contact directly at raviashoktiwari9559@gmail.com');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -281,15 +307,21 @@ export default function ContactSection() {
                   />
                 </div>
 
+                {errorMessage && (
+                  <div className="p-3 rounded-xl text-xs font-mono text-rose-400 bg-rose-500/10 border border-rose-500/30">
+                    {errorMessage}
+                  </div>
+                )}
+
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="glass-button text-white text-sm font-medium py-3.5 px-6 rounded-xl flex items-center justify-center gap-2 cursor-pointer disabled:opacity-50 mt-1"
+                  className="glass-button text-white text-sm font-medium py-3.5 px-6 rounded-xl flex items-center justify-center gap-2 cursor-pointer disabled:opacity-50 mt-1 shadow-md hover:scale-[1.01] active:scale-[0.99] transition-transform"
                 >
                   {isSubmitting ? (
                     <>
                       <div className="w-4 h-4 rounded-full border-2 border-white border-t-transparent animate-spin" />
-                      <span>Sending message...</span>
+                      <span>Dispatching to Gmail...</span>
                     </>
                   ) : (
                     <>

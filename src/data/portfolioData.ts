@@ -36,6 +36,7 @@ export const PORTFOLIO_DATA = {
     location: "India",
     email: "raviashoktiwari9559@gmail.com",
     mobile: "+91 8957181088",
+    resumeUrl: "/Ravi_Tiwari_Resume.pdf",
     github: "https://github.com/Ravi024tiwari",
     leetcode: "https://leetcode.com/u/Ravi_Tiwari2005/",
     gfg: "https://www.geeksforgeeks.org/profile/raviashoktkrsk",
@@ -119,14 +120,31 @@ export const PORTFOLIO_DATA = {
 
   projects: [
     {
+      id: "campushire",
+      title: "CampusHire — Campus Recruitment & Placement Platform",
+      tagline: "Enterprise Placement Ecosystem with 4-Tier RBAC & AI-Powered ATS Resume Parsing",
+      description: "An enterprise-grade campus recruitment and placement automation platform built with Next.js 16, React 19, TypeScript, PostgreSQL (Neon), and Prisma ORM. Features 4 specialized RBAC portals (Student, Recruiter, TPO, Admin), LangChain + Groq AI ATS resume parser for automated job matching, and real-time drive workflows.",
+      techStack: ["Next.js 16", "React 19", "PostgreSQL (Neon)", "Prisma ORM", "LangChain", "Groq AI", "TypeScript", "Tailwind CSS"],
+      category: "Full Stack",
+      liveUrl: "https://campushire-06v8.onrender.com",
+      githubUrl: "https://github.com/Ravi024tiwari/CampusHire",
+      featured: true,
+      image: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=1200&auto=format&fit=crop",
+      highlights: [
+        "4-Tier RBAC portals: Student, Recruiter, TPO (College Admin), and System Admin",
+        "LangChain & Groq AI (Llama 3.3) powered ATS resume parsing with automated match scoring",
+        "High-performance relational data modeling with PostgreSQL (Neon Serverless) and Prisma ORM",
+        "Real-time drive scheduling, candidate shortlisting, and application lifecycle tracking"
+      ]
+    },
+    {
       id: "local-service-management",
       title: "Local Service Management Platform",
       tagline: "Role-Based Discovery Platform with Geospatial Radius Matching & Razorpay Payments",
       description: "A comprehensive service discovery ecosystem supporting Customer, Provider, and Admin roles. Utilizes MongoDB geospatial indexing ($near 20km radius queries) to connect clients with nearby verified professionals, featuring seamless Razorpay online payment integration.",
       techStack: ["MERN Stack", "TypeScript", "Geospatial Indexing", "Razorpay API", "MongoDB", "Express", "Node.js"],
       category: "Full Stack",
-      frontendUrl: "https://local-service-management-a9mr.vercel.app",
-      backendUrl: "https://local-service-management-7dog.vercel.app",
+      liveUrl: "https://local-service-management-a9mr.vercel.app",
       githubUrl: "https://github.com/Ravi024tiwari",
       featured: true,
       image: "https://images.unsplash.com/photo-1521737711867-e3b97375f902?q=80&w=1200&auto=format&fit=crop",

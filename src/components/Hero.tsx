@@ -12,6 +12,7 @@ import {
   ChevronDown,
   Code,
   Award,
+  FileDown,
 } from 'lucide-react';
 import { SiGithub } from 'react-icons/si';
 import { FLOATING_TECH_ICONS } from '@/components/TechIcons';
@@ -136,6 +137,26 @@ export default function Hero() {
               >
                 <span>Explore Projects</span>
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1.5 transition-transform duration-300" />
+              </a>
+
+              <a
+                href={PORTFOLIO_DATA.personal.resumeUrl || '/Ravi_Tiwari_Resume.pdf'}
+                download="Ravi_Tiwari_Resume.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-5 py-3.5 rounded-xl text-sm font-medium flex items-center gap-2.5 transition-all cursor-pointer hover:border-(--border-hover) hover:scale-105 active:scale-95 group/resume border shadow-sm"
+                style={{
+                  background: 'var(--bg-elevated)',
+                  borderColor: 'var(--border-primary)',
+                  color: 'var(--text-primary)',
+                }}
+                title="Download Ravi Tiwari's Resume PDF"
+              >
+                <FileDown className="w-4 h-4 text-(--accent-primary) group-hover/resume:translate-y-0.5 transition-transform" />
+                <span>Resume</span>
+                <span className="text-[10px] font-mono px-1.5 py-0.5 rounded bg-(--accent-primary-soft) text-(--accent-primary) border border-(--accent-primary-border)">
+                  PDF
+                </span>
               </a>
 
               <button
